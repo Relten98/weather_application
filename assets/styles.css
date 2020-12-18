@@ -1,0 +1,22 @@
+html {
+    background-color: #46486E;
+}
+body {
+    background-color: #46486E;
+}
+.circle {
+    position: absolute;
+    width: 78%;
+    height: 300px;
+    transform: skew(-42deg);
+    background: #FAFAF9;
+    padding-left: 100px;
+    border-bottom-right-radius: 25px;
+}
+.square {
+    position: absolute;
+    width: 41%;
+    height: 462px;
+    background: #FAFAF9;
+    padding-left: 100px;
+}
