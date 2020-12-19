@@ -1,5 +1,5 @@
 /// City id changed with input in HTML
-let cityName = 'los angeles';
+let cityName = document.getElementById('city').value
 
 /// magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
@@ -84,11 +84,11 @@ if (currentweather === "Clear") {
 */
 
 
-$("#select-city").on("click", function(event) {
+$("setCity").on("click", function(event) {
     // Preventing the button from trying to submit the form......
     event.preventDefault();
     // Storing the city name........
-    var cityInput = $("#city-input").val().trim();
+    var cityInput = $("city").val().trim();
 
     //save search term to local storage.....
     var textContent = $(this).siblings("input").val();
