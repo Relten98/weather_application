@@ -1,15 +1,21 @@
 /// Pulls information from the doccument.
 const form = document.querySelector(".container");
-/// Weather API setup. Uses the NOAA API, as it it better than open weather, and far more reliable.
-let key = "472018e923msha4370e43be7a558p159d37jsn6c2d4e161c97"
-let cityName = input.value;
-const genURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=metric`;
+const input = document.querySelector(".container input");
+const Valinput = "london"
+    /// Event listener for the submit button, along with the 
 
-$.ajax(url).done(function(response) {
-    console.log(response);
 
+form.addEventListener("submit", e => {
+    e.preventDefault();
 });
 
+/// Weather API setup. Uses the NOAA API, as it it better than open weather, and far more reliable.
+let key = "472018e923msha4370e43be7a558p159d37jsn6c2d4e161c97"
+const genURL = `https://api.openweathermap.org/data/2.5/weather?q=${Valinput}&appid=${key}&units=metric`;
+
+$.ajax(genURL).done(function(response) {
+    console.log(response);
+});
 
 // When initialized, elements are hidden until after load.
 function hideElements() {
