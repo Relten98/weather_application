@@ -10,6 +10,8 @@ html {
 #city {
     color: black;
     font-weight: bold;
+    border-radius: 5px;
+    padding: 3px;
 }
 
 #cityHead {
@@ -30,7 +32,7 @@ body {
     border: solid 2px #837594;
     background-color: #F1F2F1;
     border-radius: 12px;
-    padding: 5px;
+    padding: 10px;
     float: right;
     width: 55%;
 }
