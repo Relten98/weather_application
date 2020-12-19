@@ -1,6 +1,8 @@
 /// Pulls information from the doccument.
 const form = document.querySelector(".container");
-const input = document.querySelector(".container input");
+const input = document.querySelector(".input");
+const msg = document.querySelector(".msg");
+
 let key = `e0efbfd98a4c5bc87309c276d2b36cd9`
 let cityname = "london"
 
@@ -12,17 +14,15 @@ form.addEventListener("submit", e => {
 });
 
 /// Weather API setup. Uses the NOAA API, as it it better than open weather, and far more reliable.
-const genURL = `https://api.openweathermap.org/data/2.5/weather?q=${Valinput}&appid=${key}&units=metric`;
-const url = `api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${key}`;
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${key}`;
 
 fetch(url)
     .then(response => response.json())
     .then(data => {
         // do stuff with the data
-    })
-    .catch(() => {
-        msg.textContent = "Please search for a valid city 😩";
     });
+
+
 // When initialized, elements are hidden until after load.
 function hideElements() {
     $('.content').hide;
