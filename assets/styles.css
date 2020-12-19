@@ -4,11 +4,39 @@ html {
 }
 
 .container {
-    background-color: #7684A3;
+    background-color: #837594;
+}
+
+#city {
+    color: black;
+    font-weight: bold;
+}
+
+#cityHead {
+    text-align: center;
+    color: #F1F2F1;
+    font-weight: bold;
+}
+
+#sideBar {
+    color: #F1F2F1;
 }
 
 body {
-    background: #7684A3;
+    background: #837594;
+}
+
+#weather {
+    border: solid 2px #837594;
+    background-color: #F1F2F1;
+    border-radius: 12px;
+    padding: 5px;
+    float: right;
+    width: 55%;
+}
+
+#setCity {
+    background: #C9A56F;
 }
 
 
