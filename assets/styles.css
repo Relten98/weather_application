@@ -1,10 +1,11 @@
 html {
-    background-color: #46486E;
+    background-color: #2c2d46;
     font-family: Helvetica, 'Helvetica Neue', sans-serif;
 }
 
-.container {
-    background-color: #837594;
+#container {
+    background-image: linear-gradient(#837594, #46486E);
+    background-color: #46486E;
 }
 
 #city {
@@ -12,12 +13,14 @@ html {
     font-weight: bold;
     border-radius: 5px;
     padding: 3px;
+    float: left;
 }
 
 #cityHead {
     text-align: center;
     color: #F1F2F1;
     font-weight: bold;
+    position: relative;
 }
 
 #sideBar {
@@ -30,15 +33,21 @@ body {
 
 #weather {
     border: solid 2px #837594;
-    background-color: #F1F2F1;
+    background-image: linear-gradient(#F1F2F1, #d0c8d3);
     border-radius: 12px;
     padding: 10px;
     float: right;
     width: 55%;
 }
 
+#rightBar {
+    float: right;
+}
+
 #setCity {
     background: #C9A56F;
+    float: left;
+    position: relative;
 }
 
 
