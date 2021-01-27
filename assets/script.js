@@ -1,5 +1,6 @@
 /// City id changed with input in HTML
-let cityName = document.getElementById('city').value
+var cityName = document.getElementById('cityInput').value
+
 
 /// magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
@@ -9,13 +10,12 @@ var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName
 var forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
 
 
-/*
 
+/*
 // Lat and lon along with uv
 var lat = response.coord.lat;
 var lon = response.coord.lon;
 var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
-
 */
 
 //// Current time
@@ -35,7 +35,7 @@ function findWeather(cityName) {
 }
 
 window.onload = function() {
-    var lastSearch = JSON.parse(localStorage.getItem("cityName"));
+    var lastSearch = JSON.parse(localStorage.getItem("cityInput"));
     var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
     var psearch = $("<div>");
     psearch.append(searchDiv)
@@ -85,10 +85,16 @@ if (currentweather === "Clear") {
 
 
 $("setCity").on("click", function(event) {
+    
+    var cityName = document.getElementById('cityInput').value
+
+    console.log(cityName)
+
+
     // Preventing the button from trying to submit the form......
     event.preventDefault();
     // Storing the city name........
-    var cityInput = $("city").val().trim();
+    var buildCity = $(cityName).val().trim();
 
     //save search term to local storage.....
     var textContent = $(this).siblings("input").val();
@@ -96,7 +102,7 @@ $("setCity").on("click", function(event) {
     storearr.push(textContent);
     localStorage.setItem('cityName', JSON.stringify(storearr));
 
-    searchCity(cityInput);
+    searchCity(buildCity);
     pageLoad();
 });
 
@@ -131,9 +137,12 @@ function showElements() {
     $('#content').show;
 }
 
+
 hideElements();
 
 // Preloader set up //
+
+
 $(document).ready(function() {
 
     // Toggles visibility of elements.
@@ -147,3 +156,4 @@ $(document).ready(function() {
     hidePreloader();
     showElements();
 });
+
