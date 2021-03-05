@@ -15,13 +15,13 @@ var t = new Date().getHours();
 var bgGradiant = document.getElementById('bg')
 if (t < 10) {
     console.log("Setting morningmode")
-    bgGradiant.style.backgroundColor ="background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
+    bgGradiant.style.background ="background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
 } else if (t < 12) {
     console.log("Setting daymode")
-    bgGradiant.style.backgroundColor ="background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
+    bgGradiant.style.background ="background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
 } else {
     console.log("Setting nightmode")
-    bgGradiant.style.backgroundColor ="background: linear-gradient(-45deg, #46486E, #3a2144);";
+    bgGradiant.style.background ="background: linear-gradient(-45deg, #46486E, #3a2144);";
 };
 
 
