@@ -10,6 +10,20 @@ function getDate() {
     document.getElementById('date').innerHTML = date;
 }
 
+// Automagically sets the background gradiant to a different color based on the time the application is opened.
+var t = new Date().getHours();
+var bgGradiant = document.getElementById('bg')
+if (t < 10) {
+    console.log("Setting morningmode")
+    bgGradiant.style.backgroundColor ="background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
+} else if (t < 12) {
+    console.log("Setting daymode")
+    bgGradiant.style.backgroundColor ="background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
+} else {
+    console.log("Setting nightmode")
+    bgGradiant.style.backgroundColor ="background: linear-gradient(-45deg, #46486E, #3a2144);";
+};
+
 
 /// loads the weather api & forcast
 function searchCity() {
@@ -181,7 +195,6 @@ $(document).ready(function () {
         var body = $('#container');
         body.fadeIn(bodyFadein);
     }
-
     hidePreloader();
     showElements();
 });
