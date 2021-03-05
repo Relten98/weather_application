@@ -5,18 +5,21 @@ var cityName = document.getElementById('cityInput').value; // This is just a def
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
 
 //// Current time
-let date = moment().format('L');
+function getDate() {
+    let date = moment().format('L');
+    document.getElementById('date').innerHTML = date;
+}
 
 
-    /// loads the weather api & forcast
-    function searchCity() {
-        let cityName = document.getElementById('cityInput').value
-    }
+/// loads the weather api & forcast
+function searchCity() {
+    let cityName = document.getElementById('cityInput').value
+}
 
 
 //// Get city
 function findWeather(cityName) {
-    
+
     var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
 
     fetch(weatherURL)
@@ -68,50 +71,52 @@ window.onload = function () {
 function showWeather(d) {
 
     /// This awful code is what draws the icon.
-/// Sets the visual image depending on the current weather. //
-var currentWeather = d.weather[0].description
+    /// Sets the visual image depending on the current weather. //
+    var currentWeather = d.weather[0].description
 
-if (currentWeather === "Clear") {
-    var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/01d.png");
-    currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentWeather === "Scattered") {
-    var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/02d.png");
-    currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentWeather === "Clouds") {
-    var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
-    currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentWeather === "Rain") {
-    var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/09d.png");
-    currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentWeather === "Thunder") {
-    var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/11d.png");
-    currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentWeather === "Snow") {
-    var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/13d.png");
-    currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentWeather === "Fog") {
-    var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/50d.png");
-    currentIcon.attr("style", "height: 60px; width: 60px");
-};
-/// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
+    if (currentWeather === "clear") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/01d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "scattered") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/02d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "clouds") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "overcast clouds") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "rain") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/09d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "thunder") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/11d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "snow") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/13d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "fog") {
+        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/50d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+    };
+    /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
 
 
-// Temperature
+    // Temperature
     var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
     var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
 
-    document.getElementById('date').innerHTML = currentWeather;
-    document.getElementById('icon').innerHTML = date;
-    document.getElementById('description').innerHTML = d.weather[0].description;
-    document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
-    document.getElementById('temp2').innerHTML = fahrenheit + '&deg;'+ 'F';
     document.getElementById('location').innerHTML = d.name;
-    document.getElementById('humidity').innerHTML = "Humidity :" + d.main.humidity;
+    document.getElementById('description').innerHTML = d.weather[0].description;
+    document.getElementById('icon').innerHTML = currentIcon;
+    document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
+    document.getElementById('temp2').innerHTML = fahrenheit + '&deg;' + 'F';
+    document.getElementById('humidity').innerHTML = "Humidity : " + d.main.humidity;
 }
 
 // This is for the five day forecast
 function showForecast() {
-return;
+    return;
 }
 
 
@@ -161,23 +166,22 @@ function pageLoad() {
     $("#searchhistory").prepend(psearch);
 }
 
-function showElements() {
-    $('#body').show;
-}
-
 // Preloader set up //
-
-
 $(document).ready(function () {
-
+    getDate()
     // Toggles visibility of elements.
-
     preloaderFadeOutTime = 1500;
-
+    bodyFadein = 1600;
     function hidePreloader() {
         var preloader = $('.preloader');
         preloader.fadeOut(preloaderFadeOutTime);
     }
+
+    function showElements() {
+        var body = $('#container');
+        body.fadeIn(bodyFadein);
+    }
+
     hidePreloader();
     showElements();
 });
