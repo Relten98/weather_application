@@ -24,12 +24,10 @@ if (t < 10) {
     bgGradiant.style.background ="background: linear-gradient(-45deg, #46486E, #3a2144);";
 };
 
-
 /// loads the weather api & forcast
 function searchCity() {
     let cityName = document.getElementById('cityInput').value
 }
-
 
 //// Get city
 function findWeather(cityName) {
@@ -71,8 +69,6 @@ var lon = response.coord.lon;
 var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
 
 */
-
-
 
 window.onload = function () {
     var lastSearch = JSON.parse(localStorage.getItem("cityInput"));
