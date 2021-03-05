@@ -1,17 +1,23 @@
 /// City id changed with input in HTML
-var cityName = document.getElementById('cityInput').value
+var cityName = document.getElementById('cityInput').value; // This is just a default value
+
 /// Magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
-
 
 //// Current time
 let date = moment().format('L');
 
-//// Get city
-function findWeather(cityName) {
 
     /// loads the weather api & forcast
-var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
+    function searchCity() {
+        let cityName = document.getElementById('cityInput').value
+    }
+
+
+//// Get city
+function findWeather(cityName) {
+    
+    var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
 
     fetch(weatherURL)
         .then(function (resp) { return resp.json() }) // Convert data to json
@@ -23,6 +29,14 @@ var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName
             // catch any errors
         });
 }
+
+
+function hideElements() {
+    $('#body').hide;
+};
+
+
+hideElements();
 
 function findForecast(cityName) {
     var forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
@@ -49,50 +63,53 @@ window.onload = function () {
     var psearch = $("<div>");
     psearch.append(searchDiv)
     $("#searchhistory").prepend(psearch);
-    findWeather(cityName);
 }
 
 function showWeather(d) {
 
     /// This awful code is what draws the icon.
 /// Sets the visual image depending on the current weather. //
-var currentweather = d.weather[0].description
+var currentWeather = d.weather[0].description
 
-if (currentweather === "Clear") {
+if (currentWeather === "Clear") {
     var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/01d.png");
     currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentweather === "Scattered") {
+} else if (currentWeather === "Scattered") {
     var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/02d.png");
     currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentweather === "Clouds") {
+} else if (currentWeather === "Clouds") {
     var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
     currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentweather === "Rain") {
+} else if (currentWeather === "Rain") {
     var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/09d.png");
     currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentweather === "Thunder") {
+} else if (currentWeather === "Thunder") {
     var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/11d.png");
     currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentweather === "Snow") {
+} else if (currentWeather === "Snow") {
     var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/13d.png");
     currentIcon.attr("style", "height: 60px; width: 60px");
-} else if (currentweather === "Fog") {
+} else if (currentWeather === "Fog") {
     var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/50d.png");
     currentIcon.attr("style", "height: 60px; width: 60px");
 };
 /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
 
+
 // Temperature
     var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
     var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
 
+    document.getElementById('date').innerHTML = currentWeather;
+    document.getElementById('icon').innerHTML = date;
     document.getElementById('description').innerHTML = d.weather[0].description;
-    document.getElementById('temp').innerHTML = celcius + '&deg;';
-    document.getElementById('temp2').innerHTML = fahrenheit + '&deg;';
+    document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
+    document.getElementById('temp2').innerHTML = fahrenheit + '&deg;'+ 'F';
     document.getElementById('location').innerHTML = d.name;
     document.getElementById('humidity').innerHTML = "Humidity :" + d.main.humidity;
 }
 
+// This is for the five day forecast
 function showForecast() {
 return;
 }
@@ -102,7 +119,6 @@ return;
 // Submission button on click event
 
 $("#setCity").on("click", function (event) {
-
     var cityName = document.getElementById('cityInput').value;
 
     console.log(cityName);
@@ -111,7 +127,7 @@ $("#setCity").on("click", function (event) {
     // Preventing the button from trying to submit the form......
     event.preventDefault();
     // Storing the city name........
-    var buildCity = $(cityName).val();
+    var buildCity = $(cityName);
 
     //save search term to local storage.....
     var textContent = $(this).siblings("input").val();
@@ -121,6 +137,7 @@ $("#setCity").on("click", function (event) {
     localStorage.setItem(cityName, JSON.stringify(storearr));
 
     searchCity(buildCity);
+    findWeather(cityName);
     pageLoad();
 
 });
@@ -144,18 +161,9 @@ function pageLoad() {
     $("#searchhistory").prepend(psearch);
 }
 
-
-// When initialized, elements are hidden until after load.
-function hideElements() {
-    $('#content').hide;
-};
-
 function showElements() {
-    $('#content').show;
+    $('#body').show;
 }
-
-hideElements();
-
 
 // Preloader set up //
 
