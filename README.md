@@ -1,4 +1,4 @@
-# weather_application
+# Weather Applicaion
 Keep track of the weather, with this handy tool.
 
 # Features 
@@ -15,6 +15,10 @@ Simply navigate to the provided website, then type in the name of a city you wou
 
 ![Screenshot](https://raw.githubusercontent.com/Relten98/weather_application/main/assets/screenshots/screenshot.png)
 
+# Links
 [Repo](https://github.com/Relten98/weather_application)
 
 [Deployed](https://relten98.github.io/weather_application/)
+
+# Github
+[Relten98](https://github.com/Relten98)
