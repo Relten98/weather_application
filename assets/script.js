@@ -109,7 +109,7 @@ function showWeather(d) {
     var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
     var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
 
-    document.getElementById('location').innerHTML = d.name;
+    document.getElementById('location').innerHTML = d.name + ', ' + d.sys.country;
     document.getElementById('description').innerHTML = d.weather[0].description;
     document.getElementById('icon').innerHTML = currentIcon;
     document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
@@ -159,6 +159,7 @@ $("#searchhistory").on('click', '.btn', function (event) {
 
 //// Storage
 function pageLoad() {
+    searchCity()
     var lastSearch = JSON.parse(localStorage.getItem(cityName));
     var searchDiv = $("<button id='previousSearch' class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
     var psearch = $("<div>");
