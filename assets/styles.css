@@ -8,6 +8,10 @@ h2 {
     color: silver;
 }
 
+#sideBar {
+    color: #F1F2F1;
+}
+
 #submitbar {
     width: 50%;
 }
@@ -40,6 +44,7 @@ body {
 
 
 #weather {
+    margin-top: 17px;
     border: solid 2px #837594;
     background-image: linear-gradient(#F1F2F1, #d0c8d3);
     border-radius: 12px;
