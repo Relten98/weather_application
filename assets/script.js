@@ -70,13 +70,6 @@ var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&
 
 */
 
-window.onload = function () {
-    var lastSearch = JSON.parse(localStorage.getItem("cityInput"));
-    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
-    var psearch = $("<div>");
-    psearch.append(searchDiv)
-    $("#searchhistory").prepend(psearch);
-}
 
 function showWeather(d) {
 
@@ -122,6 +115,7 @@ function showWeather(d) {
     document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
     document.getElementById('temp2').innerHTML = fahrenheit + '&deg;' + 'F';
     document.getElementById('humidity').innerHTML = "Humidity : " + d.main.humidity;
+    pageLoad();
 }
 
 // This is for the five day forecast
@@ -150,26 +144,27 @@ $("#setCity").on("click", function (event) {
 
     searchCity(buildCity);
     findWeather(cityName);
-    pageLoad();
 });
 
 //---------------------------Call stored items on page load-------------------------------------//
 
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
+    var buildCity = $(cityName);
     event.preventDefault();
-    console.log($(this).text());
-    searchCity($(this).text());
+    searchCity(buildCity);
+    findWeather(cityName);
 
 });
 
 //// Storage
 function pageLoad() {
     var lastSearch = JSON.parse(localStorage.getItem(cityName));
-    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
+    var searchDiv = $("<button id='previousSearch' class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
     var psearch = $("<div>");
     psearch.append(searchDiv)
     $("#searchhistory").prepend(psearch);
+    console.log(city);
 }
 
 // Preloader set up //
