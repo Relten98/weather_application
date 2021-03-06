@@ -43,6 +43,7 @@ function findWeather(cityName) {
         .catch(function () {
             // catch any errors
         });
+        
 }
 
 
@@ -115,7 +116,6 @@ function showWeather(d) {
     document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
     document.getElementById('temp2').innerHTML = fahrenheit + '&deg;' + 'F';
     document.getElementById('humidity').innerHTML = "Humidity : " + d.main.humidity;
-    pageLoad();
 }
 
 // This is for the five day forecast
@@ -165,6 +165,7 @@ function pageLoad() {
     var psearch = $("<div>");
     psearch.append(searchDiv)
     $("#searchhistory").prepend(psearch);
+    console.log(city);
 }
 
 // Preloader set up //
