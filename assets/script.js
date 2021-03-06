@@ -163,7 +163,6 @@ function pageLoad() {
     var psearch = $("<div>");
     psearch.append(searchDiv)
     $("#searchhistory").prepend(psearch);
-    console.log(city);
 }
 
 // Preloader set up //
