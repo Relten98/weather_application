@@ -129,7 +129,7 @@ function showForecast() {
 
 $("#setCity").on("click", function (event) {
     var cityName = document.getElementById('cityInput').value;
-
+    pageLoad(cityName)
     // Preventing the button from trying to submit the form......
     event.preventDefault();
     // Storing the city name........
@@ -165,7 +165,6 @@ function pageLoad() {
     var psearch = $("<div>");
     psearch.append(searchDiv)
     $("#searchhistory").prepend(psearch);
-    console.log(city);
 }
 
 // Preloader set up //
