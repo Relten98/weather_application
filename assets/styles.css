@@ -8,6 +8,11 @@ h2 {
     color: silver;
 }
 
+#searchhistory {
+    background-color: transparent;
+    color: transparent;
+}
+
 #submitbar {
     width: 50%;
 }
@@ -38,6 +43,9 @@ body {
     position: relative;
 }
 
+#sideBar {
+    color: #F1F2F1;
+}
 
 #weather {
     margin-top: 17px;
