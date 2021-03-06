@@ -111,7 +111,10 @@ function showWeather(d) {
     } else if (currentWeather === "fog") {
         var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/50d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
-        console.log();
+    } else if (currentWeather === "broken") {
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/50d.png");
+        currentIcon.attr("style", "height: 60px; width: 60px");
+        console.log(currentIcon);
     };
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
 
