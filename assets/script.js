@@ -15,13 +15,13 @@ var t = new Date().getHours();
 var bgGradiant = document.getElementById('bg')
 if (t < 10) {
     console.log("Setting morningmode")
-    bgGradiant.style.background ="background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
+    bgGradiant.style.background = "background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
 } else if (t < 12) {
     console.log("Setting daymode")
-    bgGradiant.style.background ="background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
+    bgGradiant.style.background = "background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
 } else {
     console.log("Setting nightmode")
-    bgGradiant.style.background ="background: linear-gradient(-45deg, #46486E, #3a2144);";
+    bgGradiant.style.background = "background: linear-gradient(-45deg, #46486E, #3a2144);";
 };
 
 /// loads the weather api & forcast
@@ -84,36 +84,34 @@ function showWeather(d) {
     /// Sets the visual image depending on the current weather. //
     var currentWeather = d.weather[0].description
 
+    // Gets img id "icon" to add the cute little pictures to the div.
+    var icon = document.getElementById("icon").src;
+
     if (currentWeather === "clear") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/01d.png");
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/01d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     } else if (currentWeather === "scattered") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/02d.png");
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/02d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     } else if (currentWeather === "clouds") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/04d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     } else if (currentWeather === "overcast clouds") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/04d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     } else if (currentWeather === "rain") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/09d.png");
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/09d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     } else if (currentWeather === "thunder") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/11d.png");
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/11d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     } else if (currentWeather === "snow") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/13d.png");
+        var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/13d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     } else if (currentWeather === "fog") {
-<<<<<<< HEAD
         var currentIcon = icon.attr("src", "http://openweathermap.org/img/wn/50d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
-        console.log(currentIcon);
-=======
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/50d.png");
-        currentIcon.attr("style", "height: 60px; width: 60px");
->>>>>>> parent of 37b72c5 (updated formatting)
+        console.log();
     };
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
 
@@ -122,7 +120,7 @@ function showWeather(d) {
     var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
     var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
 
-    document.getElementById('location').innerHTML = d.name;
+    document.getElementById('location').innerHTML = d.name + ', ' + d.sys.country;
     document.getElementById('description').innerHTML = d.weather[0].description;
     document.getElementById('icon').innerHTML = currentIcon;
     document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
@@ -163,13 +161,13 @@ $("#setCity").on("click", function (event) {
 
 });
 
-//---------------------------Call stored items on page load-------------------------------------//
+//Stored items on page load//
 
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
     event.preventDefault();
-    console.log($(this).text());
-    searchCity($(this).text());
+    console.log($(cityName).text());
+    searchCity($(cityName).text());
 
 });
 
