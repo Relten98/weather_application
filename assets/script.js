@@ -4,25 +4,29 @@ var cityName = document.getElementById('cityInput').value; // This is just a def
 /// Magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
 
+// Automagically sets the background gradiant to a different color based on the time the application is opened.
+let time = moment().format('h');
+let t = time
+
+var html = document.getElementsByTagName("html")
+if (t < 10) {
+    console.log("Setting to morning")
+    html.style.background = "background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
+} else if (t > 12) {
+    console.log("Setting night")
+    html.style.background = "background: linear-gradient(-45deg, #46486E, #3a2144);";
+} else {
+    console.log("Setting to day")
+    html.style.background = "background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
+};
+
 //// Current time
 function getDate() {
     let date = moment().format('L');
-    document.getElementById('date').innerHTML = date;
+    document.getElementById('date').innerHTML = date + ' : ' + t;
+
 }
 
-// Automagically sets the background gradiant to a different color based on the time the application is opened.
-var t = new Date().getHours();
-var bgGradiant = document.getElementById('bg')
-if (t < 10) {
-    console.log("Setting morningmode")
-    bgGradiant.style.background ="background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
-} else if (t < 12) {
-    console.log("Setting daymode")
-    bgGradiant.style.background ="background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
-} else {
-    console.log("Setting nightmode")
-    bgGradiant.style.background ="background: linear-gradient(-45deg, #46486E, #3a2144);";
-};
 
 /// loads the weather api & forcast
 function searchCity() {
@@ -43,7 +47,7 @@ function findWeather(cityName) {
         .catch(function () {
             // catch any errors
         });
-        
+
 }
 
 
@@ -59,17 +63,6 @@ function findForecast(cityName) {
 
 
 }
-
-/*
-
-// Lat and lon along with uv
-var lat = response.coord.lat;
-
-var lon = response.coord.lon;
-
-var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
-
-*/
 
 
 function showWeather(d) {
@@ -105,6 +98,11 @@ function showWeather(d) {
     };
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
 
+    // Lat and lon along with uv
+    var lat = response.coord.lat;
+    var lon = response.coord.lon;
+    var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
+
 
     // Temperature
     var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
@@ -122,7 +120,6 @@ function showWeather(d) {
 function showForecast() {
     return;
 }
-
 
 
 // Submission button on click event
@@ -146,9 +143,9 @@ $("#setCity").on("click", function (event) {
     findWeather(cityName);
 });
 
-//---------------------------Call stored items on page load-------------------------------------//
+// Call stored items on page load
 
-//// Storage
+// Storage
 function pageLoad() {
     searchCity()
     var lastSearch = JSON.parse(localStorage.getItem(cityName));
@@ -171,6 +168,7 @@ $("#searchhistory").on('click', '.btn', function (event) {
 // Preloader set up //
 $(document).ready(function () {
     getDate()
+
     // Toggles visibility of elements.
     preloaderFadeOutTime = 1500;
     bodyFadein = 1600;
