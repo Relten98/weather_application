@@ -136,9 +136,6 @@ function showForecast() {
 $("#setCity").on("click", function (event) {
     var cityName = document.getElementById('cityInput').value;
 
-    console.log(cityName);
-    pageLoad();
-
     // Preventing the button from trying to submit the form......
     event.preventDefault();
     // Storing the city name........
@@ -154,7 +151,6 @@ $("#setCity").on("click", function (event) {
     searchCity(buildCity);
     findWeather(cityName);
     pageLoad();
-
 });
 
 //---------------------------Call stored items on page load-------------------------------------//
@@ -169,7 +165,7 @@ $("#searchhistory").on('click', '.btn', function (event) {
 
 //// Storage
 function pageLoad() {
-    var lastSearch = JSON.parse(localStorage.getItem("#cityName"));
+    var lastSearch = JSON.parse(localStorage.getItem(cityName));
     var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
     var psearch = $("<div>");
     psearch.append(searchDiv)
