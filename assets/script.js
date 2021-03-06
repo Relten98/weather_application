@@ -115,7 +115,6 @@ function showWeather(d) {
     document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
     document.getElementById('temp2').innerHTML = fahrenheit + '&deg;' + 'F';
     document.getElementById('humidity').innerHTML = "Humidity : " + d.main.humidity;
-    pageLoad();
 }
 
 // This is for the five day forecast
@@ -141,9 +140,9 @@ $("#setCity").on("click", function (event) {
 
     storearr.push(textContent);
     localStorage.setItem(cityName, JSON.stringify(storearr));
-
     searchCity(buildCity);
     findWeather(cityName);
+    pageLoad(cityName);
 });
 
 //---------------------------Call stored items on page load-------------------------------------//
@@ -152,7 +151,6 @@ $("#setCity").on("click", function (event) {
 $("#searchhistory").on('click', '.btn', function (event) {
     var buildCity = $(cityName);
     event.preventDefault();
-    searchCity(buildCity);
     findWeather(cityName);
 
 });
