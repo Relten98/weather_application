@@ -4,11 +4,13 @@ var cityName = document.getElementById('cityInput').value; // This is just a def
 /// Magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
 
+/*
 // Automagically sets the background gradiant to a different color based on the time the application is opened.
 let time = moment().format('h');
 let t = time
 
 var html = document.getElementsByTagName("html")
+
 if (t < 10) {
     console.log("Setting to morning")
     html.style.background = "background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
@@ -19,8 +21,9 @@ if (t < 10) {
     console.log("Setting to day")
     html.style.background = "background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
 };
+*/
 
-//// Current time
+// Current time
 function getDate() {
     let date = moment().format('L');
     document.getElementById('date').innerHTML = date + ' : ' + t;
