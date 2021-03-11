@@ -147,6 +147,7 @@ $("#setCity").on("click", function (event) {
 
 // Call stored items on page load
 
+<<<<<<< HEAD
 // Storage
 function pageLoad() {
     searchCity()
@@ -157,6 +158,8 @@ function pageLoad() {
     $("#searchhistory").prepend(psearch);
 }
 
+=======
+>>>>>>> parent of 18c8dd9 (Update script.js)
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
     var buildCity = $(cityName);
@@ -166,6 +169,15 @@ $("#searchhistory").on('click', '.btn', function (event) {
 
 });
 
+//// Storage
+function pageLoad() {
+    searchCity()
+    var lastSearch = JSON.parse(localStorage.getItem(cityName));
+    var searchDiv = $("<button id='previousSearch' class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
+    var psearch = $("<div>");
+    psearch.append(searchDiv)
+    $("#searchhistory").prepend(psearch);
+}
 
 // Preloader set up //
 $(document).ready(function () {
