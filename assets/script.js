@@ -26,7 +26,7 @@ if (t < 10) {
 // Current time
 function getDate() {
     let date = moment().format('L');
-    document.getElementById('date').innerHTML = date + ' : ' + t;
+    document.getElementById('date').innerHTML = date;
 
 }
 
@@ -63,7 +63,6 @@ hideElements();
 
 function findForecast(cityName) {
     var forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
-
 
 }
 
