@@ -137,45 +137,29 @@ function showForecast() {
 // Submission button on click event
 
 $("#setCity").on("click", function (event) {
-<<<<<<< HEAD
-    let cityName = document.getElementById('cityInput').value;
+    var cityName = document.getElementById('cityInput').value;
     if (cityName === '') {
-        alert('Please enter a city name.')
+        alert('Please input a city');
     } else {
-        searchCity(cityName);
-        let searchDiv = $("<button id='searchhistory'>").text(cityName);
-        let psearch = $("<div>");
+        var searchDiv = $("<button id='saved' class='btn'>").text(cityName);
+        var psearch = $("<div>");
         psearch.append(searchDiv)
         $("#searchhistory").prepend(psearch);
 
         // Preventing the button from trying to submit the form......
         event.preventDefault();
+        searchCity(cityName)
     }
-=======
-    var cityName = document.getElementById('cityInput').value;
-
-    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(cityName);
-    var psearch = $("<div>");
-    psearch.append(searchDiv)
-    $("#searchhistory").prepend(psearch);
-
-    // Preventing the button from trying to submit the form......
-    event.preventDefault();
-    searchCity(cityName)
->>>>>>> parent of 6a5252a (Updated app)
 });
 
 // Call stored items on page load
 
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
-<<<<<<< HEAD
     let cityName = $(this).text()
-=======
     event.preventDefault();
->>>>>>> parent of 6a5252a (Updated app)
     console.log($(this).text());
-    
+
     findWeather(cityName);
 
 
