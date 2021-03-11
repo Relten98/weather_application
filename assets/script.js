@@ -66,6 +66,27 @@ function findForecast(cityName) {
 
 }
 
+<<<<<<< HEAD
+=======
+/*
+
+// Lat and lon along with uv
+var lat = response.coord.lat;
+
+var lon = response.coord.lon;
+
+var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
+
+*/
+
+window.onload = function () {
+    var lastSearch = JSON.parse(localStorage.getItem("cityInput"));
+    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
+    var psearch = $("<div>");
+    psearch.append(searchDiv)
+    $("#searchhistory").prepend(psearch);
+}
+>>>>>>> parent of e4eb82b (Update script.js)
 
 function showWeather(d) {
 
@@ -143,6 +164,7 @@ $("#setCity").on("click", function (event) {
 
     searchCity(buildCity);
     findWeather(cityName);
+    pageLoad();
 });
 
 // Call stored items on page load
@@ -162,10 +184,9 @@ function pageLoad() {
 >>>>>>> parent of 18c8dd9 (Update script.js)
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
-    var buildCity = $(cityName);
     event.preventDefault();
-    searchCity(buildCity);
-    findWeather(cityName);
+    console.log($(this).text());
+    searchCity($(this).text());
 
 });
 
@@ -173,7 +194,7 @@ $("#searchhistory").on('click', '.btn', function (event) {
 function pageLoad() {
     searchCity()
     var lastSearch = JSON.parse(localStorage.getItem(cityName));
-    var searchDiv = $("<button id='previousSearch' class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
+    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
     var psearch = $("<div>");
     psearch.append(searchDiv)
     $("#searchhistory").prepend(psearch);
