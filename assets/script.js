@@ -33,7 +33,10 @@ function getDate() {
 
 /// loads the weather api & forcast
 function searchCity() {
-    let cityName = document.getElementById('cityInput').value
+    let cityName = document.getElementById('cityInput').value;
+
+    findWeather(cityName);
+
 }
 
 //// Get city
@@ -136,22 +139,15 @@ function showForecast() {
 
 $("#setCity").on("click", function (event) {
     var cityName = document.getElementById('cityInput').value;
-    pageLoad(cityName)
+
+    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(cityName);
+    var psearch = $("<div>");
+    psearch.append(searchDiv)
+    $("#searchhistory").prepend(psearch);
+
     // Preventing the button from trying to submit the form......
     event.preventDefault();
-    // Storing the city name........
-    var buildCity = $(cityName);
-
-    //save search term to local storage.....
-    var textContent = $(this).siblings("input").val();
-    var storearr = [];
-
-    storearr.push(textContent);
-    localStorage.setItem(cityName, JSON.stringify(storearr));
-
-    searchCity(buildCity);
-    findWeather(cityName);
-    pageLoad();
+    searchCity(cityName)
 });
 
 // Call stored items on page load
@@ -161,17 +157,12 @@ $("#searchhistory").on('click', '.btn', function (event) {
     event.preventDefault();
     console.log($(this).text());
     searchCity($(this).text());
-
+    findWeather(cityName)
 });
 
 //// Storage
 function pageLoad() {
-    searchCity()
-    var lastSearch = JSON.parse(localStorage.getItem(cityName));
-    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
-    var psearch = $("<div>");
-    psearch.append(searchDiv)
-    $("#searchhistory").prepend(psearch);
+
 }
 
 // Preloader set up //
