@@ -1,5 +1,3 @@
-/// City id changed with input in HTML
-var cityName = document.getElementById('cityInput').value; // This is just a default value
 
 /// Magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
@@ -42,7 +40,7 @@ function searchCity() {
 //// Get city
 function findWeather(cityName) {
 
-    var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
+    let weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
 
     fetch(weatherURL)
         .then(function (resp) { return resp.json() }) // Convert data to json
@@ -65,12 +63,12 @@ function hideElements() {
 hideElements();
 
 function findForecast(cityName) {
-    var forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
+    let forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
 
 }
 
 function findUV() {
-    var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
+    let findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
 
 }
 
@@ -112,14 +110,14 @@ function showWeather(d) {
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
    */
     // Lat and lon along with uv
-    var lat = d.coord.lat;
+    let lat = d.coord.lat;
     console.log('lattitude : ' + lat);
-    var lon = d.coord.lon;
+    let lon = d.coord.lon;
     console.log('longitude : ' + lon);
 
     // Temperature
-    var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
-    var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
+    let celcius = Math.round(parseFloat(d.main.temp) - 273.15);
+    let fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
 
     // document.getElementById('icon').innerHTML = currentIcon;
     document.getElementById('location').innerHTML = d.name + ', ' + d.sys.country;
@@ -138,10 +136,10 @@ function showForecast() {
 // Submission button on click event
 
 $("#setCity").on("click", function (event) {
-    var cityName = document.getElementById('cityInput').value;
+    let cityName = document.getElementById('cityInput').value;
 
-    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(cityName);
-    var psearch = $("<div>");
+    let searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(cityName);
+    let psearch = $("<div>");
     psearch.append(searchDiv)
     $("#searchhistory").prepend(psearch);
 
@@ -154,6 +152,7 @@ $("#setCity").on("click", function (event) {
 
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
+    let cityName = $(this).text()
     event.preventDefault();
     console.log($(this).text());
     searchCity($(this).text());
@@ -173,12 +172,12 @@ $(document).ready(function () {
     preloaderFadeOutTime = 1500;
     bodyFadein = 1600;
     function hidePreloader() {
-        var preloader = $('.preloader');
+        let preloader = $('.preloader');
         preloader.fadeOut(preloaderFadeOutTime);
     }
 
     function showElements() {
-        var body = $('#container');
+        let body = $('#container');
         body.fadeIn(bodyFadein);
     }
     hidePreloader();
