@@ -122,8 +122,7 @@ function showWeather(d) {
     // document.getElementById('icon').innerHTML = currentIcon;
     document.getElementById('location').innerHTML = d.name + ', ' + d.sys.country;
     document.getElementById('description').innerHTML = d.weather[0].description;
-    document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
-    document.getElementById('temp2').innerHTML = fahrenheit + '&deg;' + 'F';
+    document.getElementById('temp').innerHTML = fahrenheit + '&deg;' + 'F' + ' / ' + celcius + '&deg;' + 'C';
     document.getElementById('humidity').innerHTML = "Humidity : " + d.main.humidity;
 }
 
@@ -137,15 +136,18 @@ function showForecast() {
 
 $("#setCity").on("click", function (event) {
     let cityName = document.getElementById('cityInput').value;
+    if (cityName === '') {
+        alert('Please enter a city name.')
+    } else {
+        searchCity(cityName);
+        let searchDiv = $("<button id='searchhistory'>").text(cityName);
+        let psearch = $("<div>");
+        psearch.append(searchDiv)
+        $("#searchhistory").prepend(psearch);
 
-    let searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(cityName);
-    let psearch = $("<div>");
-    psearch.append(searchDiv)
-    $("#searchhistory").prepend(psearch);
-
-    // Preventing the button from trying to submit the form......
-    event.preventDefault();
-    searchCity(cityName)
+        // Preventing the button from trying to submit the form......
+        event.preventDefault();
+    }
 });
 
 // Call stored items on page load
@@ -153,10 +155,11 @@ $("#setCity").on("click", function (event) {
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
     let cityName = $(this).text()
-    event.preventDefault();
     console.log($(this).text());
-    searchCity($(this).text());
-    findWeather(cityName)
+    
+    findWeather(cityName);
+
+
 });
 
 //// Storage

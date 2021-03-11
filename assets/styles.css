@@ -1,6 +1,7 @@
+
 html {
     background: transparent;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
 }
 h2 {
@@ -11,7 +12,9 @@ h2 {
 #sideBar {
     color: #F1F2F1;
 }
-
+#searchhistory {
+    color: blanchedalmond;
+}
 #submitbar {
     width: 50%;
 }
@@ -27,6 +30,36 @@ body {
     height: 100%;
 }
 
+#date {
+    margin-left: 53px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#saved {
+    color: white;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 1%;
+    padding-left: 8%;
+    padding-right: 8%;
+    background-color: #0a070aba;
+    border-bottom: 3px solid #816399;
+    border-radius: 12px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 28px;
+    border-top-left-radius: 31px;
+    border-top-right-radius: 41px;
+}
+
+#saved:hover {
+    color: whitesmoke;
+    padding: 2%;
+    padding-left: 9%;
+    padding-right: 9%;
+    background-color: #6b416b99;
+}
+
+
 #city {
     color: black;
     font-weight: bold;
@@ -36,17 +69,18 @@ body {
 }
 
 #cityHead {
+    font-family: 'Roboto', sans-serif;
     text-align: center;
-    color: #F1F2F1;
-    font-weight: bold;
+    color: #fff0ff;
     position: relative;
 }
 
 
 #weather {
+    color: blanchedalmond;
     margin-top: 17px;
-    border: solid 2px #837594;
-    background-image: linear-gradient(#F1F2F1, #d0c8d3);
+    background-color: #0a070aba;
+    border-bottom: 3px solid #816399;
     border-radius: 12px;
     padding: 10px;
     float: right;
@@ -54,7 +88,8 @@ body {
 }
 
 #location {
-    color: black;
+    font-family: 'Roboto', sans-serif;
+    color: #d8b0d9eb;
     text-align: center;
     font-weight: bold;
     font-size: auto;
@@ -64,20 +99,35 @@ body {
 #rightBar {
     float: inherit;
     position: relative;
-    border: solid 2px #837594;
-    background-image: linear-gradient(#F1F2F1, #d0c8d3);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+    border-bottom: 3px solid #816399;
+    color: white;
 }
 
-button {
-    margin: -3px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    background-image: linear-gradient(#F1F2F1, #d0c8d3);
+
+#cityInput {
+    padding-left: 15px;
+    padding-right: 8px;
+    margin-right: 7px;
+    background-color: #00000099;
+    border-radius: 1rem;
+    border-bottom: 3px solid #816399;
+    color: white;
+}
+
+#setCity {
+    margin: -22px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 10px;
+    color: #ffebcd;
+    background-image: linear-gradient(#202020, #000000);
     float: inherit;
     position: relative;
 }
-button:hover {
+#setCity:hover {
     transition: 0.5 ease-in;
+    color: #000000;
     background-image: linear-gradient(#cccceb, #b69ac0);
     font-weight: bold
 }
