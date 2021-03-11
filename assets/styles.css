@@ -125,11 +125,14 @@ body {
     float: inherit;
     position: relative;
 }
+<<<<<<< HEAD
 #setCity:hover {
     transition: 0.5 ease-in;
     color: #000000;
+=======
+button:hover {
+>>>>>>> parent of 6a5252a (Updated app)
     background-image: linear-gradient(#cccceb, #b69ac0);
-    font-weight: bold
 }
 
 

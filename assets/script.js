@@ -1,3 +1,5 @@
+/// City id changed with input in HTML
+var cityName = document.getElementById('cityInput').value; // This is just a default value
 
 /// Magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
@@ -40,7 +42,7 @@ function searchCity() {
 //// Get city
 function findWeather(cityName) {
 
-    let weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
+    var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
 
     fetch(weatherURL)
         .then(function (resp) { return resp.json() }) // Convert data to json
@@ -63,12 +65,12 @@ function hideElements() {
 hideElements();
 
 function findForecast(cityName) {
-    let forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
+    var forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
 
 }
 
 function findUV() {
-    let findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
+    var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
 
 }
 
@@ -110,14 +112,14 @@ function showWeather(d) {
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
    */
     // Lat and lon along with uv
-    let lat = d.coord.lat;
+    var lat = d.coord.lat;
     console.log('lattitude : ' + lat);
-    let lon = d.coord.lon;
+    var lon = d.coord.lon;
     console.log('longitude : ' + lon);
 
     // Temperature
-    let celcius = Math.round(parseFloat(d.main.temp) - 273.15);
-    let fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
+    var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
+    var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
 
     // document.getElementById('icon').innerHTML = currentIcon;
     document.getElementById('location').innerHTML = d.name + ', ' + d.sys.country;
@@ -135,6 +137,7 @@ function showForecast() {
 // Submission button on click event
 
 $("#setCity").on("click", function (event) {
+<<<<<<< HEAD
     let cityName = document.getElementById('cityInput').value;
     if (cityName === '') {
         alert('Please enter a city name.')
@@ -148,13 +151,29 @@ $("#setCity").on("click", function (event) {
         // Preventing the button from trying to submit the form......
         event.preventDefault();
     }
+=======
+    var cityName = document.getElementById('cityInput').value;
+
+    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(cityName);
+    var psearch = $("<div>");
+    psearch.append(searchDiv)
+    $("#searchhistory").prepend(psearch);
+
+    // Preventing the button from trying to submit the form......
+    event.preventDefault();
+    searchCity(cityName)
+>>>>>>> parent of 6a5252a (Updated app)
 });
 
 // Call stored items on page load
 
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
+<<<<<<< HEAD
     let cityName = $(this).text()
+=======
+    event.preventDefault();
+>>>>>>> parent of 6a5252a (Updated app)
     console.log($(this).text());
     
     findWeather(cityName);
@@ -175,12 +194,12 @@ $(document).ready(function () {
     preloaderFadeOutTime = 1500;
     bodyFadein = 1600;
     function hidePreloader() {
-        let preloader = $('.preloader');
+        var preloader = $('.preloader');
         preloader.fadeOut(preloaderFadeOutTime);
     }
 
     function showElements() {
-        let body = $('#container');
+        var body = $('#container');
         body.fadeIn(bodyFadein);
     }
     hidePreloader();
