@@ -81,35 +81,35 @@ function showWeather(d) {
 
     if (currentWeather === "Clear") {
 
-        document.getElementById("icon").src = "assets/icons/01d.png";
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/01d@4x.png";
 
 
     } else if (currentWeather === "Scattered") {
 
-        document.getElementById("icon").src = "assets/icons/02d.png";
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/02d@4x.png";
 
 
     } else if (currentWeather === "Clouds") {
 
-        document.getElementById("icon").src = "assets/icons/04d.png";
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/04d@4x.png";
 
 
     } else if (currentWeather === "Rain") {
 
-        document.getElementById("icon").src = "assets/icons/09d.png";
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/09d@4x.png";
 
 
     } else if (currentWeather === "Thunder") {
 
-        document.getElementById("icon").src = "assets/icons/11d.png";
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/11d@4x.png";
 
     } else if (currentWeather === "Snow") {
 
-        document.getElementById("icon").src = "assets/icons/13d.png";
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/13d@4x.png";
 
     } else if (currentWeather === "fog") {
 
-        document.getElementById("icon").src = "assets/icons/50d.png";
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/50d@4x.png";
 
     };
 
