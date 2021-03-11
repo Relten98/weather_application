@@ -1,9 +1,16 @@
 
 html {
     background: transparent;
-    font-family: 'Open Sans', sans-serif;
-
+    font-family: 'Open Sans', sans-serif;    
 }
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: -23px;
+    margin-bottom: 3px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
 h2 {
     line-height: 3;
     color: silver;
@@ -30,20 +37,26 @@ body {
     height: 100%;
 }
 
+
 #date {
+    color: blanchedalmond;
+    font-size: 16px;
     margin-left: 53px;
     font-family: 'Roboto', sans-serif;
 }
 
+#temp {
+    padding: 6px;
+}
 
+/* Saved cities button */
 #saved {
-    
     color: white;
     margin: auto;
+    margin-top: 6px;
+
     margin-bottom: 10px;
     padding: auto;
-    padding-left: 8%;
-    padding-right: 8%;
     background-color: #0a070aba;
     border-bottom: 3px solid #816399;
     border-radius: 12px;
@@ -55,9 +68,7 @@ body {
 
 #saved:hover {
     color: whitesmoke;
-    padding: 2%;
-    padding-left: 9%;
-    padding-right: 9%;
+    padding: 18px;
     background-color: #6b416b99;
 }
 
@@ -80,12 +91,14 @@ body {
 
 
 #weather {
+    text-align: center;
     color: blanchedalmond;
     margin-top: 17px;
     background-color: #0a070aba;
     border-bottom: 3px solid #816399;
     border-radius: 12px;
     padding: 10px;
+    padding-bottom: 18px;
     float: right;
     width: 60%;
     text-shadow: 2px 3px 3px #32283a;
@@ -139,9 +152,12 @@ body {
 }
 
 #icon {
-    float: center;
-    height: 150px;
-    width: auto;
+    float: left;
+    margin-top: -50px;
+    margin-left: 51px;
+    height: auto;
+    width: 191px;
+    opacity: 75%;
 }
 
 
