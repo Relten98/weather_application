@@ -66,27 +66,6 @@ function findForecast(cityName) {
 
 }
 
-<<<<<<< HEAD
-=======
-/*
-
-// Lat and lon along with uv
-var lat = response.coord.lat;
-
-var lon = response.coord.lon;
-
-var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
-
-*/
-
-window.onload = function () {
-    var lastSearch = JSON.parse(localStorage.getItem("cityInput"));
-    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
-    var psearch = $("<div>");
-    psearch.append(searchDiv)
-    $("#searchhistory").prepend(psearch);
-}
->>>>>>> parent of e4eb82b (Update script.js)
 
 function showWeather(d) {
 
@@ -169,7 +148,6 @@ $("#setCity").on("click", function (event) {
 
 // Call stored items on page load
 
-<<<<<<< HEAD
 // Storage
 function pageLoad() {
     searchCity()
@@ -180,8 +158,6 @@ function pageLoad() {
     $("#searchhistory").prepend(psearch);
 }
 
-=======
->>>>>>> parent of 18c8dd9 (Update script.js)
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
     event.preventDefault();
