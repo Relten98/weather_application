@@ -4,24 +4,7 @@ var cityName = document.getElementById('cityInput').value; // This is just a def
 /// Magic key
 const key = 'e0efbfd98a4c5bc87309c276d2b36cd9';
 
-/*
-// Automagically sets the background gradiant to a different color based on the time the application is opened.
-let time = moment().format('h');
-let t = time
 
-var html = document.getElementsByTagName("html")
-
-if (t < 10) {
-    console.log("Setting to morning")
-    html.style.background = "background: linear-gradient(-45deg, #dbd4ad, #ebbc22);";
-} else if (t > 12) {
-    console.log("Setting night")
-    html.style.background = "background: linear-gradient(-45deg, #46486E, #3a2144);";
-} else {
-    console.log("Setting to day")
-    html.style.background = "background: linear-gradient(-45deg, #61b0d4, #2f6cb3);";
-};
-*/
 
 // Current time
 function getDate() {
@@ -39,7 +22,7 @@ function searchCity() {
 
 }
 
-//// Get city
+//// Get City
 function findWeather(cityName) {
 
     var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key
@@ -49,73 +32,91 @@ function findWeather(cityName) {
         .then(function (data) {
             console.log(data);
             showWeather(data);
+            findUV(data);
         })
         .catch(function () {
             // catch any errors
         });
-
 }
 
 
 function hideElements() {
-    $('#body').hide;
+    document.getElementById('cityHead').hide
+    document.getElementById('cityInput').hide
+    document.getElementById('setCity').hide
 };
 
 
-hideElements();
-
+/*
 function findForecast(cityName) {
     var forcastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + key
 
 }
+*/
 
-function findUV() {
-    var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
+function findUV(d) {
+    let lat = d.coord.lat;
+    let lon = d.coord.lon;
+    // Lat and lon along for uv
+    console.log('lattitude : ' + lat);
+    console.log('longitude : ' + lon);
+    let uvindexURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
 
+    fetch(uvindexURL)
+        .then(function (resp) { return resp.json() }) // Convert data to json
+        .then(function (data) {
+            console.log('UV IS : ' + data.value);
+            document.getElementById('uvIndex').innerHTML = "UV Index : " + data.value;
+        })
+        .catch(function () {
+            // catch any errors
+        });
 }
 
 function showWeather(d) {
 
     /// This awful code is what draws the icon.
     /// Sets the visual image depending on the current weather. //
-    /*
-    var currentWeather = d.weather[0].description
-
+    var currentIcon = document.getElementById("icon").src = "", ;
+    var currentWeather = d.weather[0].main;
 
     if (currentWeather === "clear") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/01d.png");
+
+        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/01d.png";
         currentIcon.attr("style", "height: 60px; width: 60px");
+
     } else if (currentWeather === "scattered") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/02d.png");
+
+        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/02d.png";
         currentIcon.attr("style", "height: 60px; width: 60px");
+
     } else if (currentWeather === "clouds") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
+
+        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/04d.png";
         currentIcon.attr("style", "height: 60px; width: 60px");
-    } else if (currentWeather === "overcast clouds") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/04d.png");
-        currentIcon.attr("style", "height: 60px; width: 60px");
+
     } else if (currentWeather === "rain") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/09d.png");
+
+        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/09d.png";
         currentIcon.attr("style", "height: 60px; width: 60px");
+
     } else if (currentWeather === "thunder") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/11d.png");
+
+        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/11d.png";
         currentIcon.attr("style", "height: 60px; width: 60px");
+
     } else if (currentWeather === "snow") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/13d.png");
+
+        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/13d.png";
         currentIcon.attr("style", "height: 60px; width: 60px");
+
     } else if (currentWeather === "fog") {
-        var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/50d.png");
+
+        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/50d.png";
         currentIcon.attr("style", "height: 60px; width: 60px");
     };
-
- 
+    
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
-   */
-    // Lat and lon along with uv
-    var lat = d.coord.lat;
-    console.log('lattitude : ' + lat);
-    var lon = d.coord.lon;
-    console.log('longitude : ' + lon);
 
     // Temperature
     var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
