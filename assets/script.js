@@ -44,8 +44,8 @@ function findWeather(cityName) {
     fetch(weatherURL)
         .then(function (resp) { return resp.json() }) // Convert data to json
         .then(function (data) {
+            console.log(data);
             showWeather(data);
-            console.log(data)
         })
         .catch(function () {
             // catch any errors
@@ -66,33 +66,18 @@ function findForecast(cityName) {
 
 }
 
-<<<<<<< HEAD
-=======
-/*
+function findUV() {
+    var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
 
-// Lat and lon along with uv
-var lat = response.coord.lat;
-
-var lon = response.coord.lon;
-
-var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
-
-*/
-
-window.onload = function () {
-    var lastSearch = JSON.parse(localStorage.getItem("cityInput"));
-    var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
-    var psearch = $("<div>");
-    psearch.append(searchDiv)
-    $("#searchhistory").prepend(psearch);
 }
->>>>>>> parent of e4eb82b (Update script.js)
 
 function showWeather(d) {
 
     /// This awful code is what draws the icon.
     /// Sets the visual image depending on the current weather. //
+    /*
     var currentWeather = d.weather[0].description
+
 
     if (currentWeather === "clear") {
         var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/01d.png");
@@ -119,21 +104,23 @@ function showWeather(d) {
         var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/50d.png");
         currentIcon.attr("style", "height: 60px; width: 60px");
     };
+
+ 
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
-
+   */
     // Lat and lon along with uv
-    var lat = response.coord.lat;
-    var lon = response.coord.lon;
-    var findUVURL = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + key + "&lat=" + lat + "&lon=" + lon;
-
+    var lat = d.coord.lat;
+    console.log('lattitude : ' + lat);
+    var lon = d.coord.lon;
+    console.log('longitude : ' + lon);
 
     // Temperature
     var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
     var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
 
+    // document.getElementById('icon').innerHTML = currentIcon;
     document.getElementById('location').innerHTML = d.name + ', ' + d.sys.country;
     document.getElementById('description').innerHTML = d.weather[0].description;
-    document.getElementById('icon').innerHTML = currentIcon;
     document.getElementById('temp').innerHTML = celcius + '&deg;' + 'C';
     document.getElementById('temp2').innerHTML = fahrenheit + '&deg;' + 'F';
     document.getElementById('humidity').innerHTML = "Humidity : " + d.main.humidity;
@@ -168,16 +155,6 @@ $("#setCity").on("click", function (event) {
 });
 
 // Call stored items on page load
-
-// Storage
-function pageLoad() {
-    searchCity()
-    var lastSearch = JSON.parse(localStorage.getItem(cityName));
-    var searchDiv = $(`<button id='${lastSearch}' class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>`).text(lastSearch);
-    var psearch = $("<div>");
-    psearch.append(searchDiv)
-    $("#searchhistory").prepend(psearch);
-}
 
 // Event deligation...
 $("#searchhistory").on('click', '.btn', function (event) {
