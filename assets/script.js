@@ -77,45 +77,42 @@ function showWeather(d) {
 
     /// This awful code is what draws the icon.
     /// Sets the visual image depending on the current weather. //
-    var currentIcon = document.getElementById("icon").src = "", ;
     var currentWeather = d.weather[0].main;
 
-    if (currentWeather === "clear") {
+    if (currentWeather === "Clear") {
 
-        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/01d.png";
-        currentIcon.attr("style", "height: 60px; width: 60px");
+        document.getElementById("icon").src = "assets/icons/01d.png";
 
-    } else if (currentWeather === "scattered") {
 
-        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/02d.png";
-        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "Scattered") {
 
-    } else if (currentWeather === "clouds") {
+        document.getElementById("icon").src = "assets/icons/02d.png";
 
-        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/04d.png";
-        currentIcon.attr("style", "height: 60px; width: 60px");
 
-    } else if (currentWeather === "rain") {
+    } else if (currentWeather === "Clouds") {
 
-        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/09d.png";
-        currentIcon.attr("style", "height: 60px; width: 60px");
+        document.getElementById("icon").src = "assets/icons/04d.png";
 
-    } else if (currentWeather === "thunder") {
 
-        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/11d.png";
-        currentIcon.attr("style", "height: 60px; width: 60px");
+    } else if (currentWeather === "Rain") {
 
-    } else if (currentWeather === "snow") {
+        document.getElementById("icon").src = "assets/icons/09d.png";
 
-        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/13d.png";
-        currentIcon.attr("style", "height: 60px; width: 60px");
+
+    } else if (currentWeather === "Thunder") {
+
+        document.getElementById("icon").src = "assets/icons/11d.png";
+
+    } else if (currentWeather === "Snow") {
+
+        document.getElementById("icon").src = "assets/icons/13d.png";
 
     } else if (currentWeather === "fog") {
 
-        var currentIcon = document.getElementById("icon").src = "http://openweathermap.org/img/wn/50d.png";
-        currentIcon.attr("style", "height: 60px; width: 60px");
+        document.getElementById("icon").src = "assets/icons/50d.png";
+
     };
-    
+
     /// ^ This crap is literally Yanderedev levels of trash, but it gets the job done... I guess. 
 
     // Temperature
